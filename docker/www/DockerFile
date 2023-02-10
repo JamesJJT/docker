@@ -1,0 +1,9 @@
+FROM nginx:1.15.11-alpine
+# arguments
+ARG APP_WEB_ROOT=/var/www/html
+
+COPY --chown=nginx:nginx src ${APP_WEB_ROOT}
+
+RUN apk add --no-cache bash ca-certificates openssl
+
+WORKDIR ${APP_WEB_ROOT}
